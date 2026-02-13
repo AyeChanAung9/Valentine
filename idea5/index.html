@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Page</title>
+    <style>
+        /* CSS styles */
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        #background-hearts-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        #content-container {
+            text-align: center;
+            z-index: 1;
+        }
+
+        #homepage,
+        #tryagain,
+        #Yespage {
+            text-align: center;
+        }
+
+        h1 {
+            color: #ff69b4;
+            /* Pink color */
+            font-size: 3rem;
+            /* Larger text */
+            text-align: center;
+        }
+
+        @keyframes glowAndBounce {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0);
+                /* Bounce effect */
+                text-shadow: 0 0 5px #ff69b4, 0 0 10px #ff69b4, 0 0 20px #ff69b4;
+                /* Glow effect */
+            }
+
+            40% {
+                transform: translateY(-20px);
+                /* Bounce effect */
+                text-shadow: 0 0 10px #ff69b4, 0 0 20px #ff69b4, 0 0 40px #ff69b4;
+                /* Glow effect */
+            }
+
+            60% {
+                transform: translateY(-10px);
+                /* Bounce effect */
+                text-shadow: 0 0 10px #ff69b4, 0 0 20px #ff69b4, 0 0 40px #ff69b4;
+                /* Glow effect */
+            }
+        }
+
+        .combined-effect {
+            animation: glowAndBounce 2s infinite;
+            color: #ffffff;
+            /* White text for better contrast */
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        button.expanded {
+            transition: font-size 0.5s;
+        }
+
+        .image-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .small-image {
+            width: 150px;
+            height: auto;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 10px;
+        }
+
+        .heart {
+            height: 70px;
+            width: 70px;
+            background: #df859e;
+            position: relative;
+            transform: rotate(-45deg);
+            box-shadow: -10px 10px 90px #df859e;
+            animation: heart 0.6s linear infinite;
+        }
+
+        @keyframes heart {
+            0% {
+                transform: rotate(-45deg) scale(1.07);
+            }
+
+            80% {
+                transform: rotate(-45deg) scale(1);
+            }
+
+            100% {
+                transform: rotate(-45deg) scale(0.8);
+            }
+        }
+
+        .heart:before,
+        .heart:after {
+            content: "";
+            position: absolute;
+            height: 70px;
+            width: 70px;
+            background: #df859e;
+            border-radius: 50px;
+            box-shadow: -10px 10px 90px #df859e;
+        }
+
+        .heart:before {
+            top: -50%;
+        }
+
+        .heart:after {
+            right: -50%;
+        }
+
+        /* Button styles */
+        #expandButton {
+            background-color: #3498db;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #yesButton {
+            background-color: #2ecc71;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #tryAgainButton {
+            background-color: #e74c3c;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button.expanded {
+            transition: font-size 0.5s, background-color 0.5s;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="background-hearts-container"></div>
+    <div id="content-container">
+        <!-- Homepage -->
+        <div id="homepage">
+            <h1 class="combined-effect">Will U be My Valentine?</h1>
+            <div class="image-container">
+                <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExcDdtZ2JiZDR0a3lvMWF4OG8yc3p6Ymdvd3g2d245amdveDhyYmx6eCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/cLS1cfxvGOPVpf9g3y/giphy.gif"
+                    alt="Cute animated illustration" />
+                <!-- Replace this GIF with your desired image
+                <div class="tenor-gif-embed" data-postid="3092575458093618655" data-share-method="host" data-aspect-ratio="1" data-width="100%">
+                    <a href="https://tenor.com/view/hi-waving-gif-3092575458093618655">Hi Waving GIF</a> from <a href="https://tenor.com/search/hi-gifs">Hi GIFs</a>
+                </div>
+                 -->
+                <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+                <div class="button-container">
+                    <button id="expandButton" onclick="expandButtons()">
+                        No Thanks
+                    </button>
+                    <button id="yesButton" onclick="redirectToYesPage()">
+                        Yes Please
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Try Again Page -->
+        <div id="tryagain" class="hidden">
+            <h1 class="combined-effect">I won't accept NO as an answer</h1>
+            <div class="image-container">
+                <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExenY5ZmNkbDFnMHI0c3BlOTd6M3c1a3R4MTI5Y2hrOHVrcXRkd254dCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/lPM06f2zvk94jBAzlP/giphy.gif"
+                    alt="Cute animated illustration" />
+                <!-- Replace this GIF with your desired image 
+                <div class="tenor-gif-embed" data-postid="928884211471914100" data-share-method="host" data-aspect-ratio="1" data-width="100%">
+                    <a href="https://tenor.com/view/dudu-dudu-mad-bear-mad-dudu-funny-bubu-mad-gif-928884211471914100">Dudu Dudu Mad GIF</a> from <a href="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExcDdtZ2JiZDR0a3lvMWF4OG8yc3p6Ymdvd3g2d245amdveDhyYmx6eCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/cLS1cfxvGOPVpf9g3y/giphy.gif">Dudu GIFs</a>
+                </div>
+                -->
+                <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+                <button id="tryAgainButton" onclick="restart('tryagain')">
+                    Please Reconsider
+                </button>
+            </div>
+        </div>
+
+        <!-- Yes Page -->
+        <div id="Yespage" class="hidden">
+            <h1 class="combined-effect">You Are Mine Now</h1>
+            <div class="image-container">
+                <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExYmVqNDhvYWxxZHoyajIyNGcwZDVsbmlpdW83YzZ6Z3kzeTRyeXYxdSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/eltZvfFAW9f9HI1foH/giphy.gif"
+                    alt="Cute animated illustration" />
+                <!-- Replace this GIF with your desired image 
+                <div class="tenor-gif-embed" data-postid="21532992" data-share-method="host" data-aspect-ratio="1" data-width="100%">
+                    <a href="https://tenor.com/view/eid-gif-21532992">Eid GIF</a> from <a href="https://tenor.com/search/eid-gifs">Eid GIFs</a>
+                </div>
+                -->
+                <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+                <button id="expandButton" onclick="restart('Yespage')">Back</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript code
+        let clickCount = 0;
+
+        function expandButtons() {
+            const buttons = document.querySelectorAll("button");
+
+            if (clickCount < 7) {
+                buttons.forEach((button) => {
+                    let currentSize = parseFloat(getComputedStyle(button).fontSize);
+                    let newSize = currentSize + 5;
+                    button.style.fontSize = newSize + "px";
+                });
+                clickCount++;
+            } else {
+                document.getElementById("homepage").classList.add("hidden");
+                document.getElementById("tryagain").classList.remove("hidden");
+            }
+        }
+
+        function redirectToYesPage() {
+            document.getElementById("homepage").classList.add("hidden");
+            document.getElementById("Yespage").classList.remove("hidden");
+        }
+
+        function restart(page) {
+            document.getElementById(page).classList.add("hidden");
+            document.getElementById("homepage").classList.remove("hidden");
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const heartsContainer = document.getElementById(
+                "background-hearts-container"
+            );
+
+            for (let i = 0; i < 30; i++) {
+                const heart = document.createElement("div");
+                heart.className = "heart";
+                heart.style.left = Math.random() * (window.innerWidth - 100) + "px";
+                heart.style.top = Math.random() * (window.innerHeight - 100) + "px";
+                heartsContainer.appendChild(heart);
+            }
+        });
+    </script>
+</body>
+
+</html>

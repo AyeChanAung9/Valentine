@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Valentine Idea 1</title>
+    <link rel="stylesheet" href="../assets/style.css" />
+    <style>
+      :root {
+        --bg-1: #fff0f6;
+        --bg-2: #ffd6e9;
+        --card: #fff7fb;
+        --accent: #ff5fa2;
+        --accent-2: #ff94c7;
+        --text: #3b2a35;
+      }
+
+      .idea1-page .letter-sub {
+        color: #ff95c5;
+        font-family: "Pacifico", cursive;
+        font-size: 1.22rem;
+        text-shadow: 0 2px 8px rgba(63, 20, 37, 0.28);
+      }
+
+      .idea1-page .heart {
+        background: #ff6faf;
+        box-shadow: 0 0 14px rgba(255, 111, 175, 0.35);
+        animation-name: floatLetter;
+      }
+
+      .idea1-page .heart::before,
+      .idea1-page .heart::after {
+        background: #ff6faf;
+      }
+
+      .idea1-page .flower {
+        background: #ff95c5;
+      }
+
+      @keyframes floatLetter {
+        0% {
+          transform: translateY(100vh) rotate(-45deg) scale(0.85);
+          opacity: 0;
+        }
+        30% {
+          opacity: 0.85;
+        }
+        70% {
+          transform: translateY(20vh) rotate(-30deg) scale(1.1);
+        }
+        100% {
+          transform: translateY(-120px) rotate(-45deg) scale(1.15);
+          opacity: 0;
+        }
+      }
+    </style>
+  </head>
+  <body class="idea1-page">
+    <div class="heart-field" aria-hidden="true"></div>
+    <div class="rose-field" aria-hidden="true"></div>
+
+    <main>
+      <section class="card route" data-route="intro">
+        <span class="badge">The Letter</span>
+        <h1 class="title">I got a letter for you</h1>
+        <p class="subtitle letter-sub">Tap the envelope to open it.</p>
+        <div class="envelope-stage">
+          <div class="envelope" id="envelope">
+            <div class="envelope-flap"></div>
+            <div class="envelope-note">Open me</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card route" data-route="ask1">
+        <span class="badge">The Letter Says</span>
+        <h1 class="title">Will you be my Valentine?</h1>
+        <p class="subtitle letter-sub">I wrote this with my whole heart.</p>
+        <div class="hero">
+          <img
+            src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3ZGw2YjgxY2p0bHQ0NTFrdnhzZjljanJvcDJ1eGNsaGhlMjhoYzQ4YiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/rSOMJPt2w64Y1BrjeQ/giphy.gif"
+            alt="Cute letter animation"
+          />
+        </div>
+        <div class="actions">
+          <button class="btn btn-primary" data-safe onclick="location.hash='final1'">Yes, open my heart</button>
+          <button class="btn btn-secondary" data-runaway onclick="location.hash='please1'">No, sorry</button>
+        </div>
+      </section>
+
+      <section class="card route" data-route="please1">
+        <span class="badge">Wait wait</span>
+        <h1 class="title">Please reconsider?</h1>
+        <p class="subtitle">I even sealed it with a kiss.</p>
+        <div class="hero">
+          <img
+            src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3dHRiMmF4OHJuMWN0YTFjcGN2eWFuMWwxYno0cDYzem9yeXp3NGwyZiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/25688FI5AUUVf04upZ/giphy.gif"
+            alt="Please animation"
+          />
+        </div>
+        <div class="actions">
+          <button class="btn btn-primary" onclick="location.hash='ask1'">Ok, ask again</button>
+        </div>
+      </section>
+
+      <section class="card route" data-route="final1">
+        <span class="badge">You said yes</span>
+        <h1 class="title">My favorite letter.</h1>
+        <p class="subtitle letter-sub">Flower for U.</p>
+        <div class="hero">
+          <img
+            src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExaG1mcTFoNWJ6NXB6dWprd2YybmRwOWlibnAzZmpzbmgwbzZuZDNqciZlcD12MV9naWZzX3NlYXJjaCZjdD1n/wvYNSqBAMDVx8CEYkt/giphy.gif"
+            alt="Celebration animation"
+          />
+        </div>
+        <div class="actions">
+          <button class="btn btn-primary" onclick="location.hash='ask1'">Replay</button>
+        </div>
+      </section>
+    </main>
+
+    <script src="../assets/app.js"></script>
+    <script>
+      const envelope = document.getElementById("envelope");
+      if (envelope) {
+        envelope.addEventListener("click", () => {
+          envelope.classList.add("is-open");
+          setTimeout(() => {
+            location.hash = "ask1";
+          }, 600);
+        });
+      }
+    </script>
+  </body>
+</html>

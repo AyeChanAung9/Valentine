@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Valentine Idea 3</title>
+    <link rel="stylesheet" href="../assets/style.css" />
+    <style>
+      :root {
+        --bg-1: #ffe8f3;
+        --bg-2: #ffd1e8;
+        --card: #fff7fb;
+        --accent: #e85a99;
+        --accent-2: #ff9fc7;
+        --text: #422434;
+      }
+
+      .idea3-page .card {
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        backdrop-filter: none;
+      }
+
+      .idea3-page .heart {
+        width: 18px;
+        height: 10px;
+        border-radius: 70% 30% 70% 30%;
+        transform: rotate(18deg);
+        background: rgba(245, 124, 173, 0.9);
+        box-shadow: 0 0 12px rgba(245, 124, 173, 0.3);
+        animation-name: petalDrift;
+      }
+
+      .idea3-page .heart::before,
+      .idea3-page .heart::after {
+        display: none;
+      }
+
+      .idea3-page .flower {
+        background: #ff9fc7;
+      }
+
+      .idea3-page .flower::before,
+      .idea3-page .flower::after {
+        background: #ff82b7;
+      }
+
+      .word-line {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 8px;
+      }
+
+      .word-line span {
+        display: inline-block;
+        opacity: 0;
+        transform: translateY(12px);
+        animation: wordUp 0.55s ease forwards;
+        font-family: "Pacifico", cursive;
+        font-size: clamp(1.5rem, 4vw, 2.2rem);
+        color: var(--accent);
+      }
+
+      .word-line span:nth-child(1) {
+        animation-delay: 0.05s;
+      }
+
+      .word-line span:nth-child(2) {
+        animation-delay: 0.35s;
+      }
+
+      .word-line span:nth-child(3) {
+        animation-delay: 0.65s;
+      }
+
+      @keyframes wordUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes petalDrift {
+        0% {
+          transform: translateY(-120px) translateX(-24px) rotate(8deg) scale(0.75);
+          opacity: 0;
+        }
+        12% {
+          opacity: 0.75;
+        }
+        45% {
+          transform: translateY(42vh) translateX(10vw) rotate(22deg) scale(1);
+        }
+        100% {
+          transform: translateY(110vh) translateX(24vw) rotate(44deg) scale(1.05);
+          opacity: 0;
+        }
+      }
+
+      .bouquet-wrap {
+        margin: 16px auto 6px;
+        width: min(390px, 95%);
+        padding: 4px 2px;
+      }
+
+      .bouquet-img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .scratch-note {
+        position: relative;
+        margin: 10px auto 0;
+        width: min(360px, 96%);
+        background: #ffd86b;
+        border: 1px solid rgba(84, 54, 19, 0.2);
+        border-radius: 8px 18px 10px 14px;
+        padding: 16px;
+        box-shadow: 0 16px 28px rgba(83, 50, 13, 0.2);
+        transform-origin: top center;
+        transform: rotate(-1.6deg);
+        animation: popIn 0.35s ease;
+      }
+
+      .scratch-note::before {
+        content: "";
+        position: absolute;
+        top: -10px;
+        left: 50%;
+        width: 48px;
+        height: 22px;
+        transform: translateX(-50%) rotate(2deg);
+        background: rgba(255, 255, 255, 0.35);
+        border-radius: 4px;
+      }
+
+      .scratch-note::after {
+        content: "";
+        position: absolute;
+        right: 20px;
+        bottom: -8px;
+        width: 30px;
+        height: 14px;
+        background: rgba(0, 0, 0, 0.06);
+        filter: blur(4px);
+      }
+
+      .scratch-title {
+        margin: 0 0 8px;
+        font-family: "Pacifico", cursive;
+        color: #6b3a12;
+        font-size: 1.5rem;
+      }
+
+      .scratch-copy {
+        margin: 0 0 12px;
+        color: #5f3b1a;
+      }
+
+      .scratch-wrap {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 16 / 10;
+        border-radius: 12px;
+        overflow: hidden;
+        background: #fff;
+      }
+
+      .scratch-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .scratch-canvas {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        touch-action: none;
+        cursor: grab;
+      }
+
+      .scratch-label {
+        margin: 0 0 10px;
+        text-align: center;
+        font-family: "Pacifico", cursive;
+        color: #fff;
+        font-size: 1.2rem;
+        text-shadow: none;
+      }
+
+      @keyframes popIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px) scale(0.95) rotate(-3deg);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1) rotate(-1.6deg);
+        }
+      }
+    </style>
+  </head>
+  <body class="idea3-page">
+    <div class="heart-field" aria-hidden="true"></div>
+    <div class="rose-field" aria-hidden="true"></div>
+
+    <main>
+      <section class="card route" data-route="ask3">
+        <div class="word-line" aria-label="Happy Valentine Day">
+          <span>Happy</span>
+          <span>Valentine</span>
+          <span>Day</span>
+        </div>
+        <p class="subtitle">A little bouquet for someone special.</p>
+
+        <div class="bouquet-wrap">
+          <img class="bouquet-img" src="../assets/flowers-bouquet.svg" alt="Valentine flower bouquet" />
+        </div>
+
+        <div class="actions">
+          <button class="btn btn-primary" onclick="location.hash='scratch3'">Accept the flower</button>
+        </div>
+
+      </section>
+
+      <section class="card route" data-route="scratch3">
+        <div class="scratch-note" id="scratch-note">
+          <h2 class="scratch-title">For my forever favorite</h2>
+          <p class="scratch-copy">You make even ordinary days feel like poetry. Scratch this little note.</p>
+          <p class="scratch-label">Scratch this</p>
+          <div class="scratch-wrap" id="scratch-wrap">
+            <img
+              src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3YjcyZ2plZHVpOXpsY2wxdmN3bzRmcWg2MDE0eWtoZjZybncwbnl4bSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/qJKG2VemiNjO7Fv4Ct/giphy.gif"
+              alt="Romantic reveal"
+            />
+            <canvas class="scratch-canvas" id="scratch-canvas"></canvas>
+          </div>
+        </div>
+      </section>
+
+      <section class="card route layout-stack" data-route="final3">
+        <h1 class="title">You make my heart smile.</h1>
+        <p class="subtitle">I will choose you, every day.</p>
+        <div class="hero">
+          <img
+            src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3dHRiMmF4OHJuMWN0YTFjcGN2eWFuMWwxYno0cDYzem9yeXp3NGwyZiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/25688FI5AUUVf04upZ/giphy.gif"
+            alt="Final celebration animation"
+          />
+        </div>
+        <p class="note">Thank you for being you.</p>
+        <div class="actions">
+          <button class="btn btn-primary" onclick="location.hash='ask3'">Replay</button>
+        </div>
+      </section>
+    </main>
+
+    <script src="../assets/app.js"></script>
+    <script>
+      const scratchCanvas = document.getElementById("scratch-canvas");
+      const scratchWrap = document.getElementById("scratch-wrap");
+      const scratchNote = document.getElementById("scratch-note");
+      const finalRoute = "final3";
+      const scratchRoute = "scratch3";
+      let scratchDone = false;
+      let isDrawing = false;
+
+      function setupScratchLayer() {
+        if (!scratchCanvas || !scratchWrap) return;
+
+        const rect = scratchWrap.getBoundingClientRect();
+        const dpr = window.devicePixelRatio || 1;
+        scratchCanvas.width = Math.floor(rect.width * dpr);
+        scratchCanvas.height = Math.floor(rect.height * dpr);
+
+        const ctx = scratchCanvas.getContext("2d");
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        ctx.globalCompositeOperation = "source-over";
+
+        ctx.fillStyle = "#ffffff";
+        ctx.fillRect(0, 0, rect.width, rect.height);
+      }
+
+      function scratchAt(event) {
+        if (!scratchCanvas || scratchDone) return;
+        const rect = scratchCanvas.getBoundingClientRect();
+        const ctx = scratchCanvas.getContext("2d");
+        const clientX = event.touches ? event.touches[0].clientX : event.clientX;
+        const clientY = event.touches ? event.touches[0].clientY : event.clientY;
+        const x = clientX - rect.left;
+        const y = clientY - rect.top;
+
+        ctx.globalCompositeOperation = "destination-out";
+        ctx.beginPath();
+        ctx.arc(x, y, 22, 0, Math.PI * 2);
+        ctx.fill();
+
+      }
+
+      function getClearedRatio() {
+        if (!scratchCanvas) return 0;
+        const ctx = scratchCanvas.getContext("2d", { willReadFrequently: true });
+        const pixels = ctx.getImageData(0, 0, scratchCanvas.width, scratchCanvas.height).data;
+        let transparent = 0;
+
+        for (let i = 3; i < pixels.length; i += 4) {
+          if (pixels[i] < 35) transparent += 1;
+        }
+
+        return transparent / (pixels.length / 4);
+      }
+
+      function maybeCompleteScratch() {
+        if (scratchDone) return;
+        if (getClearedRatio() > 0.9) {
+          scratchDone = true;
+          setTimeout(() => {
+            location.hash = finalRoute;
+          }, 3000);
+        }
+      }
+
+      if (scratchCanvas) {
+        const start = (event) => {
+          if (window.location.hash !== "#" + scratchRoute || scratchDone) return;
+          isDrawing = true;
+          scratchAt(event);
+        };
+
+        const move = (event) => {
+          if (!isDrawing || scratchDone) return;
+          scratchAt(event);
+          maybeCompleteScratch();
+        };
+
+        const end = () => {
+          if (!isDrawing) return;
+          isDrawing = false;
+          maybeCompleteScratch();
+        };
+
+        scratchCanvas.addEventListener("mousedown", start);
+        scratchCanvas.addEventListener("mousemove", move);
+        window.addEventListener("mouseup", end);
+
+        scratchCanvas.addEventListener("touchstart", start, { passive: true });
+        scratchCanvas.addEventListener("touchmove", move, { passive: true });
+        window.addEventListener("touchend", end, { passive: true });
+      }
+
+      function resetScratchForRoute() {
+        if (window.location.hash === "#" + scratchRoute) {
+          scratchDone = false;
+          if (scratchNote) scratchNote.classList.remove("scratched");
+          setupScratchLayer();
+        }
+      }
+
+      window.addEventListener("DOMContentLoaded", resetScratchForRoute);
+      window.addEventListener("hashchange", resetScratchForRoute);
+      window.addEventListener("resize", () => {
+        if (window.location.hash === "#" + scratchRoute) {
+          setupScratchLayer();
+        }
+      });
+    </script>
+  </body>
+</html>

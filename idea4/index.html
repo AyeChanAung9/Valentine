@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Valentine Idea 4</title>
+    <link rel="stylesheet" href="../assets/style.css" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&display=swap");
+
+      :root {
+        --bg-1: #151515;
+        --bg-2: #050505;
+        --card: #fff8f8;
+        --accent: #d54a66;
+        --accent-2: #f28da1;
+        --text: #2f2025;
+      }
+
+      .idea4-page {
+        background: radial-gradient(circle at top right, #222, #090909 50%, #040404);
+      }
+
+      .idea4-page main {
+        width: min(92vw, 620px);
+      }
+
+      .idea4-page .heart {
+        background: rgba(255, 179, 193, 0.36);
+        box-shadow: none;
+        animation-name: nightFloat;
+      }
+
+      .idea4-page .heart::before,
+      .idea4-page .heart::after {
+        background: rgba(255, 179, 193, 0.36);
+      }
+
+      .paper {
+        transform: rotate(-2.2deg);
+        border-radius: 18px;
+      }
+
+      .paper .title {
+        font-size: clamp(2rem, 5vw, 3rem);
+      }
+
+      .paper .subtitle {
+        letter-spacing: 0.7px;
+        text-transform: uppercase;
+        font-weight: 600;
+        color: #5a454c;
+      }
+
+      .paper .actions {
+        justify-content: center;
+      }
+
+      .paper .btn-primary {
+        min-width: 164px;
+      }
+
+      .paper .btn-secondary {
+        min-width: 164px;
+      }
+
+      .retry-title {
+        font-family: "Pacifico", cursive;
+        color: var(--accent);
+        font-size: clamp(2.1rem, 5vw, 3.1rem);
+        margin: 2px 0 6px;
+        animation: titleShow 0.55s ease both;
+      }
+
+      .retry-sub {
+        text-transform: uppercase;
+        letter-spacing: 0.9px;
+        font-weight: 600;
+        margin: 0 0 14px;
+      }
+
+      .retry-wrap {
+        display: grid;
+        place-items: center;
+        gap: 8px;
+      }
+
+      .retry-wrap img {
+        width: min(220px, 62vw);
+        height: auto;
+        display: block;
+      }
+
+      .retry-btn {
+        border-radius: 10px;
+        min-width: 170px;
+        background: #fff;
+        color: #55343e;
+        border: 2px solid rgba(136, 85, 98, 0.4);
+      }
+
+      .retry-arrow {
+        font-family: "Caveat", cursive;
+        color: #c3405e;
+        font-size: 1.8rem;
+        margin-top: -4px;
+      }
+
+      .final-note {
+        font-family: "Caveat", cursive;
+        font-size: 1.7rem;
+        color: #c3405e;
+      }
+
+      @keyframes nightFloat {
+        0% {
+          transform: translateY(100vh) rotate(-45deg) scale(0.75);
+          opacity: 0;
+        }
+        22% {
+          opacity: 0.45;
+        }
+        100% {
+          transform: translateY(-120px) rotate(-45deg) scale(1.05);
+          opacity: 0;
+        }
+      }
+    </style>
+  </head>
+  <body class="idea4-page">
+    <div class="heart-field" aria-hidden="true"></div>
+    <div class="rose-field" aria-hidden="true"></div>
+
+    <main>
+      <section class="card route paper" data-route="ask4">
+        <h1 class="title">Will you be my Valentine?</h1>
+        <p class="subtitle">I made this page for you.</p>
+        <div class="hero">
+          <img
+            src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbDBhMXlheWVnN2g4Z3hnemh0OWpmdWt5YWR3eTRuYzgxdXQ1aWYyMCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/HKvbasW8mKOcG2TCmc/giphy.gif"
+            alt="Cute animation"
+          />
+        </div>
+        <div class="actions">
+          <button class="btn btn-primary" data-safe onclick="location.hash='final4'">YES, I WILL</button>
+          <button class="btn btn-secondary" data-runaway onclick="location.hash='please4'">NO</button>
+        </div>
+      </section>
+
+      <section class="card route paper" data-route="please4">
+        <h2 class="retry-title">Trust me... you'll love it!!</h2>
+        <p class="retry-sub">Please try again, my love</p>
+        <div class="retry-wrap">
+          <img
+            src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbDBhMXlheWVnN2g4Z3hnemh0OWpmdWt5YWR3eTRuYzgxdXQ1aWYyMCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/JSxzmyV7AqeABDQKed/giphy.gif"
+            alt="Cute pleading animation"
+          />
+          <button class="btn retry-btn" onclick="location.hash='ask4'">FINE! GO BACK</button>
+          <div class="retry-arrow">⤸</div>
+        </div>
+      </section>
+
+      <section class="card route paper" data-route="final4">
+        <h1 class="title">You said yes.</h1>
+        <p class="subtitle">This made my whole day.</p>
+        <div class="hero">
+          <img
+            src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3dHRiMmF4OHJuMWN0YTFjcGN2eWFuMWwxYno0cDYzem9yeXp3NGwyZiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/25688FI5AUUVf04upZ/giphy.gif"
+            alt="Celebration animation"
+          />
+        </div>
+        <p class="final-note">Thank you for being you.</p>
+        <div class="actions">
+          <button class="btn btn-primary" onclick="location.hash='ask4'">REPLAY</button>
+        </div>
+      </section>
+    </main>
+
+    <script src="../assets/app.js"></script>
+  </body>
+</html>
